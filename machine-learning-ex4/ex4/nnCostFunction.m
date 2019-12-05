@@ -67,21 +67,12 @@ h=sigmoid(a2*Theta2');
 yv=(repmat([1:num_labels],m,1)==y);
 J=1/m*sum(sum(-yv.*log(h)-(1-yv).*log(1-h)));
 
+theta1tmp = Theta1;
+theta2tmp = Theta2;
+theta1tmp(:,1)=0;
+theta2tmp(:,1)=0;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+J=J+lambda/(2*m)*(sum(sum(theta1tmp.^2))+sum(sum(theta2tmp.^2)))
 
 % -------------------------------------------------------------
 
